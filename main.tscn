@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://biyn554kj4a0c"]
+
+[ext_resource type="PackedScene" uid="uid://cllx6odntjn4w" path="res://player.tscn" id="1_pn2op"]
+[ext_resource type="Texture2D" uid="uid://dk7ac4deo0y7x" path="res://icon.svg" id="2_ljgut"]
+[ext_resource type="Script" path="res://test.gd" id="3_tl81v"]
+[ext_resource type="Texture2D" uid="uid://7ro2jhxxy3k7" path="res://122068.jpg" id="4_dbve6"]
+
+[node name="main" type="Node2D"]
+
+[node name="122068" type="Sprite2D" parent="."]
+modulate = Color(0.360784, 0.137255, 0.145098, 1)
+z_index = -100
+texture_repeat = 2
+position = Vector2(581, 355)
+texture = ExtResource("4_dbve6")
+
+[node name="player" parent="." instance=ExtResource("1_pn2op")]
+position = Vector2(575, 312)
+
+[node name="bullet" parent="player/gun/bullet_spawn" index="0"]
+visible = true
+
+[node name="test" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ljgut")
+script = ExtResource("3_tl81v")
+
+[editable path="player"]

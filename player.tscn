@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://cllx6odntjn4w"]
+
+[ext_resource type="PackedScene" uid="uid://ddy4y6kaeo2n4" path="res://curved_trail.tscn" id="1_curnf"]
+[ext_resource type="Texture2D" uid="uid://bti8q3udx58em" path="res://Sprite-0001.png" id="1_necpa"]
+[ext_resource type="Script" path="res://gun.gd" id="2_1yj7h"]
+[ext_resource type="PackedScene" uid="uid://ca71quuh1xtjx" path="res://bullet.tscn" id="3_j50mr"]
+[ext_resource type="Texture2D" uid="uid://dllh2l3u6bgjh" path="res://Sprite-0002.png" id="3_p3ufs"]
+[ext_resource type="Texture2D" uid="uid://uvjajpd14rqa" path="res://Sprite-0003.png" id="4_0kc22"]
+[ext_resource type="Script" path="res://Player_movement.gd" id="7_lm6iy"]
+
+[node name="player" type="CharacterBody2D"]
+
+[node name="Trail" parent="." instance=ExtResource("1_curnf")]
+width = 100.0
+MAX_POINTS = 50
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_necpa")
+
+[node name="gun" type="Node2D" parent="."]
+script = ExtResource("2_1yj7h")
+bullet = ExtResource("3_j50mr")
+
+[node name="fire_rate" type="Timer" parent="gun"]
+one_shot = true
+
+[node name="gun" type="Sprite2D" parent="gun"]
+position = Vector2(50, 0)
+rotation = 1.5708
+texture = ExtResource("3_p3ufs")
+
+[node name="bullet_spawn" type="Marker2D" parent="gun"]
+position = Vector2(88, 0)
+
+[node name="bullet" type="Sprite2D" parent="gun/bullet_spawn"]
+visible = false
+rotation = 1.5708
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("4_0kc22")
+
+[node name="Player_movement" type="Node" parent="."]
+script = ExtResource("7_lm6iy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.47

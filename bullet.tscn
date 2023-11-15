@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca71quuh1xtjx"]
+
+[ext_resource type="Texture2D" uid="uid://uvjajpd14rqa" path="res://Sprite-0003.png" id="1_77vkq"]
+[ext_resource type="Script" path="res://bullet.gd" id="1_ywdg0"]
+[ext_resource type="PackedScene" uid="uid://ddy4y6kaeo2n4" path="res://curved_trail.tscn" id="2_fp211"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pnudy"]
+radius = 3.0
+height = 10.0
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_ywdg0")
+
+[node name="Trail" parent="." instance=ExtResource("2_fp211")]
+width = 5.0
+
+[node name="Sprite-0003" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_77vkq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pnudy")
